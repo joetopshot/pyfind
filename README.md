@@ -9,3 +9,14 @@ That version of the program worked nicely as is but didn't allow for
 entering regular expressions for files and/or directories that were
 being searched.
 
+Note that this version of pyFind uses regular expressions so if you
+want to find all files that end in mm execute the following line:
+	pyFind.py . ".*mm$"
+	
+Without the '$' at the end you would get all files that contain 
+the letters 'mm'.  
+
+For all directories that start with 'freeplane', use
+the following command:
+	pyFind.py . "^freeplane.*" -d
+	

@@ -9,7 +9,7 @@ def find(directory, filename, dirOnly, fileOnly):
 		dirOnly = 1;
 		fileOnly = 1;
 
-	pattern = re.compile(filename)
+	pattern = re.compile(filename, flags=re.IGNORECASE)
 	for root, dirs, files in os.walk(directory):
 		if dirOnly == 1:
 			if pattern.match(os.path.basename(os.path.normpath((root)))):
