@@ -2,21 +2,23 @@
 
 import os
 import sys
+import re
 
 def find(directory, filename, dirOnly, fileOnly):
 	if (dirOnly == 0 and fileOnly == 0):
 		dirOnly = 1;
 		fileOnly = 1;
 
+	pattern = re.compile(filename)
 	for root, dirs, files in os.walk(directory):
 		if dirOnly == 1:
-			if os.path.basename(os.path.normpath((root))) == filename:
+			if pattern.match(os.path.basename(os.path.normpath((root)))):
 				print(root)
-		for file in files:
-			pathname = os.path.join(root, file)
+		for myfile in files:
+			pathname = os.path.join(root, myfile)
 			if os.path.exists(pathname):
 				if (fileOnly == 1):
-					if file == filename:
+					if (pattern.match(myfile)):
 						print(pathname)
 
 def main():
@@ -55,5 +57,5 @@ def main():
 if __name__ == '__main__':
 	main()
 else:
-	print("this is a standalone not a module!")
+	print("This is a standalone program, not a module!")
 
